@@ -5,6 +5,7 @@ const getTodos = (req, res) => {
    res.json(todos);
 };
 
+// craete todo
 const createTodo = (req, res) => {
    const { id, title } = req.body; 
    const existingTodo = todos.find(t => t.id === id);
