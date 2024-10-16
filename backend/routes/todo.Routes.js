@@ -1,18 +1,10 @@
-// routes/todoRoutes.js
-const express = require('express');
-const {
-   getTodos,
-   createTodo,
-   updateTodo,
-   deleteTodo
-} = require('../controllers/todo.Controller');
+// routes/todo.Routes.js
+import express from 'express';
+import { getTodos } from '../controllers/todo.Controller.js';
 
 const router = express.Router();
 
-// Routes with meaningful names
-router.get('/', getTodos);
-router.post('/create-new', createTodo);
-router.patch('/update/:id', updateTodo);
-router.delete('/delete/:id', deleteTodo);
+// GET all todos
+router.get('/get-todos', getTodos);
 
-module.exports = router;
+export const todoRoutes = router;

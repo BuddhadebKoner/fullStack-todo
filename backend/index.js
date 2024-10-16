@@ -1,16 +1,44 @@
-// app.js
-const express = require('express');
-const todoRoutes = require('./routes/todo.Routes');
+// index.js
+import express from 'express';
+import dotenv from 'dotenv';
+import mysql from 'mysql2';
+import { todoRoutes } from './routes/todo.Routes.js';
+
+// Load environment variables
+dotenv.config();
 
 const app = express();
-const PORT = 3000;
+app.use(express.json()); // For parsing application/json
 
-app.use(express.json());
+// MySQL connection
+const db = mysql.createConnection({
+   host: 'srv1492.hstgr.io',
+   user: 'u331669058_todoapp',
+   password: '&jYk*7Hg',
+   database: 'u331669058_todo',
+});
+
+db.connect((err) => {
+   if (err) {
+      console.log('Error connecting to MySQL:', err);
+   } else {
+      console.log('MySQL Connected...');
+   }
+});
+
+// Make the database connection accessible in controllers
+app.set('db', db);
 
 // Routes
-app.use('/todos', todoRoutes);
+app.use('/api/todos', todoRoutes);
 
-// Start server
+// Root route
+app.get('/', (req, res) => {
+   res.send('Server is running');
+});
+
+// Start the server
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-   console.log(`Server is running on http://localhost:${PORT}`);
+   console.log(`Server running on port ${PORT}`);
 });
