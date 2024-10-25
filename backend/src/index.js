@@ -1,4 +1,3 @@
-// index.js
 import express from 'express';
 import dotenv from 'dotenv';
 import mysql from 'mysql2';
@@ -12,10 +11,10 @@ app.use(express.json()); // For parsing application/json
 
 // MySQL connection
 const db = mysql.createConnection({
-   host: 'srv1492.hstgr.io',
-   user: 'u331669058_todoapp',
-   password: '&jYk*7Hg',
-   database: 'u331669058_todo',
+   host: process.env.DB_HOST,
+   user: process.env.DB_USER,
+   password: process.env.DB_PASSWORD,
+   database: process.env.DB_NAME,
 });
 
 db.connect((err) => {
