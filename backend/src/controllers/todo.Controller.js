@@ -1,4 +1,4 @@
-import { getAllTodos, createTodo, updateTodo, deleteTodo } from '../sql/todo.sql.js';
+import { getAllTodos, createTodo, updateTodo, deleteTodo} from '../sql/todo.sql.js';
 
 const getTodos = (req, res) => {
    const db = req.app.get('db');
@@ -27,11 +27,12 @@ const updateTodoById = (req, res) => {
    const db = req.app.get('db');
    const { id } = req.params;
    const updatedTodo = req.body;
+   console.log("Updating todo:", updatedTodo,id);
    updateTodo(db, id, updatedTodo, (err, result) => {
       if (err) {
          return res.status(500).json({ error: err.message });
       }
-      res.json({ message: 'Todo updated successfully' });
+      res.json({ message: result});
    });
 };
 

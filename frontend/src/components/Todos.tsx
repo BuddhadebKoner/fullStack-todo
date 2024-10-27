@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Todo = {
   id: number;
@@ -52,7 +52,7 @@ const Todos = () => {
   const doneTodos = todos.filter(todo => todo.completed === 1);
 
   return (
-    <section className="w-full h-fit lg:px-[30vw] md:px-[10rem] px-[10px] pt-[2rem] flex">
+    <section className="w-full h-fit lg:px-[30vw] md:px-[10rem] px-[10px] py-[2rem] flex">
       <div className="w-full h-full bg-[#1C1C1C] pb-10 flex flex-col rounded-lg">
 
         {/* Pending Todos */}

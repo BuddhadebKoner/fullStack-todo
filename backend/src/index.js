@@ -3,6 +3,8 @@ import dotenv from 'dotenv';
 import mysql from 'mysql2';
 import { todoRoutes } from './routes/todo.Routes.js';
 
+// https://auth-db1492.hstgr.io/index.php?route=/sql&pos=0&db=u331669058_todo&table=todos
+
 // Load environment variables
 dotenv.config();
 
@@ -11,6 +13,7 @@ app.use(express.json()); // For parsing application/json
 
 // MySQL connection
 const db = mysql.createConnection({
+   connectionLimit: 10,
    host: process.env.DB_HOST,
    user: process.env.DB_USER,
    password: process.env.DB_PASSWORD,
@@ -24,6 +27,11 @@ db.connect((err) => {
       console.log('MySQL Connected...');
    }
 });
+
+db.on('error', (err) => {
+   console.error('Database error:', err);
+});
+
 
 // Make the database connection accessible in controllers
 app.set('db', db);

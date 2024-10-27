@@ -12,7 +12,7 @@ const TodoForm = ({ action }: TodoFormProps) => {
   const maxDescLength = 100;
 
   return (
-    <section className="w-full h-fit lg:px-[30vw] md:px-[10rem] px-[10px] pt-[5rem] flex">
+    <section className="w-full h-fit lg:px-[30vw] md:px-[10rem] px-[10px] pt-[2rem] flex">
       <div className="w-full h-full bg-[#1C1C1C] p-5 flex flex-col gap-10 rounded-lg">
         <h1 className="text-white text-3xl font-bold">What to do ?</h1>
         <form className="w-full h-full flex flex-col justify-center items-center gap-8">

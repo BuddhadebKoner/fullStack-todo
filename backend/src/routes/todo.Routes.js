@@ -11,9 +11,10 @@ router.get('/get-todos', getTodos);
 // craete a new todo
 router.post('/create-todo', createNewTodo);
 // update a todo
-router.put('/update-todo',updateTodoById);
+router.put('/update-todo/:id', updateTodoById);
 // delete a todo
-router.delete('/delete-todo',deleteTodoById);
+router.delete('/delete-todo/:id', deleteTodoById);
+
 
 
 export const todoRoutes = router;
