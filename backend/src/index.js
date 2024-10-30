@@ -3,35 +3,30 @@ import dotenv from 'dotenv';
 import mysql from 'mysql2';
 import { todoRoutes } from './routes/todo.Routes.js';
 
-// https://auth-db1492.hstgr.io/index.php?route=/sql&pos=0&db=u331669058_todo&table=todos
-
-// Load environment variables
 dotenv.config();
 
 const app = express();
 app.use(express.json()); // For parsing application/json
 
-// MySQL connection
-const db = mysql.createConnection({
-   connectionLimit: 10,
+// MySQL connection pool
+const db = mysql.createPool({
    host: process.env.DB_HOST,
    user: process.env.DB_USER,
    password: process.env.DB_PASSWORD,
    database: process.env.DB_NAME,
+   waitForConnections: true,
+   connectionLimit: 10,
+   queueLimit: 0,
 });
 
-db.connect((err) => {
-   if (err) {
-      console.log('Error connecting to MySQL:', err);
-   } else {
-      console.log('MySQL Connected...');
-   }
-});
-
-db.on('error', (err) => {
-   console.error('Database error:', err);
-});
-
+// Keep-Alive Ping to avoid MySQL disconnection
+setInterval(() => {
+   db.query('SELECT 1', (err) => {
+      if (err) {
+         console.error('Keep-alive query failed:', err);
+      }
+   });
+}, 5 * 60 * 1000); // Ping every 5 minutes
 
 // Make the database connection accessible in controllers
 app.set('db', db);

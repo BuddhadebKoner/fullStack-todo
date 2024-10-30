@@ -18,34 +18,55 @@ const Todos = () => {
   // Example data 
   const todos: Todo[] = [
     {
-      id: 1,
-      title: "hello guys",
-      description: "this is all about fullstack todo",
-      completed: 0,
-      created_at: "2024-10-24T00:53:40.000Z"
+      "id": 1,
+      "title": "hello guys",
+      "description": "this is all about fullstack todo",
+      "completed": 1,
+      "created_at": "2024-10-24T00:53:40.000Z"
     },
     {
-      id: 2,
-      title: "this is second todo",
-      description: "create todo route test",
-      completed: 1,
-      created_at: "2024-10-24T01:06:16.000Z"
+      "id": 2,
+      "title": "2nd todo changes",
+      "description": "changes todo",
+      "completed": 0,
+      "created_at": "2024-10-24T01:06:16.000Z"
     },
     {
-      id: 3,
-      title: "this is second todo",
-      description: "create todo route test",
-      completed: 1,
-      created_at: "2024-10-24T01:06:16.000Z"
+      "id": 3,
+      "title": "See you not for mind",
+      "description": "this is a log story",
+      "completed": 1,
+      "created_at": "2024-10-26T11:26:30.000Z"
     },
     {
-      id: 4,
-      title: "this is second todo",
-      description: "create todo route test",
-      completed: 0,
-      created_at: "2024-10-24T01:06:16.000Z"
+      "id": 4,
+      "title": "See you not for mind",
+      "description": "this is a log story",
+      "completed": 0,
+      "created_at": "2024-10-26T23:34:10.000Z"
+    },
+    {
+      "id": 6,
+      "title": "6th todo",
+      "description": "whats upp bro",
+      "completed": 0,
+      "created_at": "2024-10-26T23:43:59.000Z"
+    },
+    {
+      "id": 7,
+      "title": "7th todo",
+      "description": "whats upp bro",
+      "completed": 0,
+      "created_at": "2024-10-26T23:46:53.000Z"
+    },
+    {
+      "id": 8,
+      "title": "9th todo",
+      "description": "whats upp bro",
+      "completed": 0,
+      "created_at": "2024-10-27T21:39:25.000Z"
     }
-  ];
+  ]
 
   // Separate pending and completed todos
   const pendingTodos = todos.filter(todo => todo.completed === 0);
