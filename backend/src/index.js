@@ -1,11 +1,16 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import mysql from 'mysql2';
+import cors from 'cors'; // Import cors
 import { todoRoutes } from './routes/todo.Routes.js';
 
 dotenv.config();
 
 const app = express();
+
+// Enable CORS for specific origin (add this line)
+app.use(cors({ origin: process.env.CORS_ORIGIN }));
+
 app.use(express.json()); // For parsing application/json
 
 // MySQL connection pool
